@@ -1,8 +1,10 @@
 package kr.co.sist.elysian.user.join.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import kr.co.sist.elysian.user.mypage.model.domain.NationalDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,10 +30,11 @@ public class JoinController {
 	private JoinService js;
 	
 	@GetMapping("/join.do")
-	public String joinFrm() {
-		
-		return "user/join/joinIntro";
-		
+	public String joinFrm(Model model) {
+        List<NationalDomain> allnationalInfo = js.selectAllNationalInfo();
+        model.addAttribute("allnationalInfo", allnationalInfo);
+
+        return "user/join/joinIntro";
 	} // joinFrm
 	
 	//회원 아이디 중복 확인

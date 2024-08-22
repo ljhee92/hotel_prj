@@ -2,7 +2,10 @@ package kr.co.sist.elysian.user.join.service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.List;
 
+import kr.co.sist.elysian.user.join.repository.JoinDAO;
+import kr.co.sist.elysian.user.mypage.model.domain.NationalDomain;
 import net.nurigo.sdk.NurigoApp;
 import net.nurigo.sdk.message.model.Message;
 import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
@@ -27,6 +30,9 @@ public class JoinService{
 	
 	@Autowired(required = false)
 	private UserDAO uDAO;
+
+	@Autowired(required = false)
+	private JoinDAO joinDAO;
 	
 //	@Value("${sms.api.key}")
 //    private String api_key;
@@ -155,5 +161,19 @@ public class JoinService{
         certifiedPhoneNumber(userPhone, randomNumber);
         return Integer.toString(randomNumber);
     } // sendSMS
+
+	/**
+	 * DAO에서 가져온 전체 국가 정보를 반환
+	 * @return 전체 국가정보
+	 */
+	public List<NationalDomain> selectAllNationalInfo() {
+		List<NationalDomain> allnationalInfo = null;
+		try {
+			allnationalInfo = joinDAO.selectAllNationalInfo();
+		} catch(PersistenceException pe) {
+			pe.printStackTrace();
+		} // end catch
+		return allnationalInfo;
+	} // selectAllNationalInfo
 
 } // class

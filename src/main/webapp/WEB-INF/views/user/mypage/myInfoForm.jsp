@@ -439,7 +439,7 @@
 			<li>
 				<div class="intWrap">
 					<span class="tit">
-						<label for="national">NATIONALITY</label>
+						<label for="nationCode">NATIONALITY</label>
 						<span class="essential">필수</span>
 					</span>
 				</div>
