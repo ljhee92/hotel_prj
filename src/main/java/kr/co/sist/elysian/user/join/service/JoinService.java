@@ -3,6 +3,11 @@ package kr.co.sist.elysian.user.join.service;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
+import net.nurigo.sdk.NurigoApp;
+import net.nurigo.sdk.message.model.Message;
+import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
+import net.nurigo.sdk.message.response.SingleMessageSentResponse;
+import net.nurigo.sdk.message.service.DefaultMessageService;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +28,19 @@ public class JoinService{
 	@Autowired(required = false)
 	private UserDAO uDAO;
 	
-	@Value("${sms.api.key}")
-    private String api_key;
-    
-    @Value("${sms.api.secret.key}")
-    private String api_secret;
-	
+//	@Value("${sms.api.key}")
+//    private String api_key;
+//
+//    @Value("${sms.api.secret.key}")
+//    private String api_secret;
+
+	final DefaultMessageService messageService;
+
+	public JoinService(@Value("${api.key}") String key,  @Value("${api.secret.key}") String secretKey) {
+		// 반드시 계정 내 등록된 유효한 API 키, API Secret Key를 입력해주셔야 합니다!
+		this.messageService = NurigoApp.INSTANCE.initialize(key, secretKey, "https://api.coolsms.co.kr");
+	} // JoinService
+
 	//회원 아이디 중복 확인
 	public UserDomain searchUser(UserVO uVO) {
 		UserDomain udm = null;
@@ -87,7 +99,28 @@ public class JoinService{
         }
 		
 	}//addUser
-	
+
+	/**
+	 * 회원가입 휴대폰 번호 문자 인증 개선
+	 * @param userPhone
+	 * @param randomNumber
+	 */
+	private void certifiedPhoneNumber(String userPhone, int randomNumber) {
+		Message message = new Message();
+
+		// 발신번호 및 수신번호는 반드시 01012345678 형태로 입력되어야 합니다.
+		message.setFrom("01039299258");
+		message.setTo(userPhone);
+
+		StringBuilder smsMessage = new StringBuilder();
+		smsMessage.append("[Eysian호텔] SMS인증번호는 ").append(randomNumber).append("입니다. 정확히 입력해주세요.");
+
+		message.setText(smsMessage.toString());
+
+		SingleMessageSentResponse response = this.messageService.sendOne(new SingleMessageSendingRequest(message));
+		System.out.println(response);
+	} // certifiedPhoneNumber
+
 	//회원가입 문자 인증
 //	private void certifiedPhoneNumber(String userPhone, int randomNumber) {
 //        Message coolsms = new Message(api_key, api_secret);
@@ -112,17 +145,15 @@ public class JoinService{
 //            System.out.println("Exception: " + errorMessage);
 //        }
 //    }
-//
-//	private int generateRandomNumber() {
-//        return (int)((Math.random() * (999999 - 100000 + 1)) + 100000); // 6자리 난수 생성
-//    }
-//
-//	public String sendSMS(String userPhone) {
-//        int randomNumber = generateRandomNumber();
-//        certifiedPhoneNumber(userPhone, randomNumber);
-//        return Integer.toString(randomNumber);
-//    }
-	
-	
-	
-}
+
+	private int generateRandomNumber() {
+        return (int)((Math.random() * (999999 - 100000 + 1)) + 100000); // 6자리 난수 생성
+    } // generateRandomNumber
+
+	public String sendSMS(String userPhone) {
+        int randomNumber = generateRandomNumber();
+        certifiedPhoneNumber(userPhone, randomNumber);
+        return Integer.toString(randomNumber);
+    } // sendSMS
+
+} // class

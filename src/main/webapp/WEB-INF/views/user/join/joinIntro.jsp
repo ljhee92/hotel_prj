@@ -978,14 +978,6 @@
                     <!-- [국문] 휴대폰인증 후, Default -->
                     <dl>
                         <dt>회원정보</dt>
-						<!-- 통신사 본인인증 불가
-                        <dd>
-                            
-                            FEMALE
-                        </dd>
-                        <dd>01039299258</dd>
-                        <dd>1992.10.15</dd>
-                         -->
                     </dl>
                 </div>
                 <div class="frmInfo">

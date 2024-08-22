@@ -331,8 +331,7 @@ public class MyPageService{
         message.setText(smsMessage.toString());
         
         SingleMessageSentResponse response = this.messageService.sendOne(new SingleMessageSendingRequest(message));
-        System.out.println(response);
-        
+
         jsonObj.put("randomNum", formattedNum);
         jsonObj.put("statusMessage", response.component5());
         jsonObj.put("statusCode", response.component8());

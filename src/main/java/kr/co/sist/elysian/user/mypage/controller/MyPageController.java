@@ -142,7 +142,7 @@ public class MyPageController {
 	
 	/**
 	 * 선택한 예약 번호의 예약 취소
-	 * @param request
+	 * @param requestData
 	 * @return 예약 취소 결과
 	 */
 	@ResponseBody
@@ -239,7 +239,7 @@ public class MyPageController {
 	
 	/**
 	 * 선택한 다이닝 예약 번호의 예약 취소
-	 * @param request
+	 * @param requestData
 	 * @return 예약 취소 결과
 	 */
 	@ResponseBody
@@ -311,7 +311,7 @@ public class MyPageController {
 	
 	/**
 	 * 회원정보 수정 내 이메일 중복확인
-	 * @param userEmail
+	 * @param email
 	 * @return 이메일 중복확인 결과
 	 */
 	@ResponseBody
@@ -350,7 +350,7 @@ public class MyPageController {
 	/**
 	 * 비밀번호 변경
 	 * @param curLoginPassword 현재 비밀번호
-	 * @param loginPassword 새로 바꿀 비밀번호
+	 * @param newLoginPassword 새로 바꿀 비밀번호
 	 * @param session
 	 * @return 처리 결과
 	 */
