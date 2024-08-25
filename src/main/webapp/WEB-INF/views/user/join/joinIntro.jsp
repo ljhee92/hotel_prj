@@ -78,7 +78,7 @@
         });
 
 
-        $("#userName").on("input", function () {
+        $("#userName").on("compositionend", function () {
             validateUserName();
         });//input
 		
@@ -164,17 +164,14 @@
     	
         var selectedCountry = $("#nationCode").val();
         if (selectedCountry !== "KR") {
-            //$("#userNameField").hide(); // 필드를 숨김
             var eName1 = $("#eName1").val().toUpperCase();
             var eName2 = $("#eName2").val().toUpperCase();
             $("#userName").val(eName2 + " " + eName1);
-            //$("#userName").val($("#eName2").val()+" "+$("#eName1").val()); //한국이름을 영어 이름 조합으로 설정
-            $("#userName").attr("readonly",true)
-            natFlag=false;    
-        } else{ 
-        	natFlag=true;
-        	//alert("한국이름")
-            $("#userName").attr("readonly",false)
+            $("#userName").attr("readonly", true);
+            natFlag = false;
+        } else {
+        	natFlag = true;
+            $("#userName").attr("readonly", false);
         }
     }//updateUserNameField
 
@@ -492,7 +489,7 @@
 
         //전화번호 입력여부 확인alert
         var userName = jQuery.trim(jQuery("#userName").val());
-        if (id.length < 1) {
+        if (userName.length < 1) {
             alert("입력된 이름이 없습니다.");
             return false;
         }
@@ -867,15 +864,6 @@
         }
     }
 
-	/* 테스트용
-    function simulateSMSSuccess(phone) {
-        console.log("Simulating SMS success for phone:", phone);
-        alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
-        $("#userPhoneVerify").attr("disabled", false);
-        code2 = "123456"; // 테스트용 인증번호 설정
-    }
-	*/
-    
 </script>
 
 <form id="formJoin" name="formJoin">
