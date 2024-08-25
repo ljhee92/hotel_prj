@@ -40,4 +40,6 @@
 - coolSMS(인증) : [https://docs.coolsms.co.kr/development-kits/java](https://docs.coolsms.co.kr/development-kits/java)
 
 ## 💾 Docs
-- [UseCase Diagram](https://github.com/YeongKing/hotel_prj/blob/temp/docs/UseCase.png)
+- [UseCase Diagram](https://github.com/ljhee92/hotel_prj/blob/main/docs/UseCase.png)
+- [Class Diagram](https://github.com/ljhee92/hotel_prj/blob/main/docs/ClassDiagram.jpg)
+- [ERD](https://github.com/ljhee92/hotel_prj/blob/main/docs/ERD.png)
