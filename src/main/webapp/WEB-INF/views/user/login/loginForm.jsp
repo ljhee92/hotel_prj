@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
- pageEncoding="UTF-8" 
- info="" %>
+ pageEncoding="UTF-8" info="" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -301,8 +300,8 @@ function getLoginCookie(cookieName) {
 					<h3 class="hidden">
 					아이디 로그인<!-- 아이디 로그인 -->
 					</h3>
-					<div class="loginBox" style="position: relative; height: 50vh; width: 100%;"> <!-- 소셜 로그인 추가 시 style 제거 -->
-						<div class="membersLogin" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"> <!-- 소셜 로그인 추가 시 style 제거 -->
+					<div class="loginBox"> <!--style="position: relative; height: 50vh; width: 100%;"--> <!-- 소셜 로그인 추가 시 style 제거 -->
+						<div class="membersLogin"> <!--style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"--> <!-- 소셜 로그인 추가 시 style 제거 -->
 							<p class="loginFrm">
 								<!-- 필수입력서식에 미입력 발생 시, error 클래스 추가 alertMessage 노출, 포커스가 가면 error 클래스 제거 -->
 								<span class="alertMessage">
@@ -332,15 +331,15 @@ function getLoginCookie(cookieName) {
 						</div>
 						<div class="snsLogin">
                             
-                            <!-- 소셜 로그인 
+                            <!-- 소셜 로그인 -->
 							<a href="javascript:void(0);" class="google">구글 로그인</a> 
-							<a href="javascript:void(0);" class="facebook">페이스북 로그인</a> 
+							<!--<a href="javascript:void(0);" class="facebook">페이스북 로그인</a>
 							
-								<a href="javascript:void(0);" class="naver">네이버 로그인</a>
+								<a href="javascript:void(0);" class="naver">네이버 로그인</a>-->
                                 
 								<a href="javascript:void(0);" class="kakao">카카오톡 로그인</a>
 							
-							<a href="javascript:void(0);" class="apple">애플 로그인</a>
+							<!--<a href="javascript:void(0);" class="apple">애플 로그인</a>-->
 							<!-- 20200528 수정 : 애플로그인(추가) -->
 						</div>
 					</div>
