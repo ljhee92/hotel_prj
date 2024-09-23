@@ -24,28 +24,24 @@ public class LoginService{
 		}//end catch
 		
 		return udm;
-		
-		
-	}
+	} // searchLogin
 
-	
 	public void updateLoginDate(String userId ) {
-
-		
 		try {
 			uDAO.updateLoginDate( userId );
 		}catch(PersistenceException pe) {
 			pe.printStackTrace();
 		}//end catch
-		
-		
-
-		
 	}//updateLoginDate
 	
+	// 소셜 로그인 연동
+	public int updateSocialId(UserVO userVO) {
+		return uDAO.updateSocialId(userVO);
+	} // updateSocialId
+
+	// 소셜 로그인 접속 일자, 로그인 방법 업데이트
+	public int updateSocialLoginDate(UserVO userVO) {
+		return uDAO.updateSocialLoginDate(userVO);
+	} // udpateSocialLoginDate
 	
-	
-	
-	
-	
-}
+} // class

@@ -175,23 +175,23 @@ function getLoginCookie(cookieName) {
 					switch (lnkType) {
 						case "google":
 							winSize = 'width=750,height=850';
-							lnkUrl = "/sns/googleLogin.do?fromPageType=LOGIN";
+							window.location.href = "https://accounts.google.com/o/oauth2/auth?client_id=159130807671-4md95bd83nh56i9v2o2i3rtn0pdn3ip3.apps.googleusercontent.com&redirect_uri=http://localhost:8080/hotel_prj/user/googleLogin.do&response_type=code&scope=email profile openid&prompt=login";
 							break;
 						case "facebook":
 							winSize = 'width=750,height=850';
-							lnkUrl = "/sns/facebookLogin.do?fromPageType=LOGIN";
+							lnkUrl = "/facebookLogin.do?fromPageType=LOGIN";
 							break;
 						case "naver":
 							winSize = 'width=750,height=850';
-							lnkUrl = "/sns/naverLogin.do?callbackType=login&fromPageType=LOGIN";
+							lnkUrl = "/naverLogin.do?callbackType=login&fromPageType=LOGIN";
 							break;
 						case "kakao":
 							winSize = 'width=750,height=850';
-							lnkUrl = "/sns/kakaoLogin.do?callbackType=login&fromPageType=LOGIN";
+							lnkUrl = "/kakaoLogin.do?callbackType=login&fromPageType=LOGIN";
 							break;
 						case "apple":
 							winSize = 'width=750,height=850';
-							lnkUrl = "/sns/appleLogin.do?fromPageType=LOGIN";
+							lnkUrl = "/appleLogin.do?fromPageType=LOGIN";
 							break;
 						default:
 							break;
